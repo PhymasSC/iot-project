@@ -1,9 +1,11 @@
-// pages/_app.js
-// 1. Import `createTheme`
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-// 2. Call `createTheme` and pass your custom values
+interface MyAppProps {
+	Component: React.ComponentType;
+	pageProps: any;
+}
+
 const lightTheme = createTheme({
 	type: "light",
 });
@@ -12,8 +14,7 @@ const darkTheme = createTheme({
 	type: "dark",
 });
 
-// 3. Pass the new `theme`` to the `NextUIProvider`
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: MyAppProps) {
 	return (
 		<NextThemesProvider
 			defaultTheme="system"
